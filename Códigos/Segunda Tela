@@ -10,18 +10,15 @@ class _Home2State extends State<Home2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: Text(
-            "Tela2",
-            style: TextStyle(fontSize: 25),
-          ),
+        appBar: AppBar(
+          centerTitle: true,
+          title: new Text("Horarios de Saida"),
         ),
-      ),
-    );
+        body: Container(
+                child: RaisedButton(
+          color: Colors.yellow,
+          child: Text('04:15'),
+          onPressed: () {},
+        )));
   }
 }
