@@ -1,0 +1,98 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+/// This Widget is the main application widget.
+class MyApp extends StatelessWidget {
+  static const String _title = 'ÔNIBUS DV';
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: _title,
+      home: MyStatelessWidget(),
+    );
+  }
+}
+
+final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+final SnackBar snackBar = const SnackBar(content: Text(''));
+
+void openPage(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(
+    builder: (BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('SOBRE O APP'),
+        ),
+        body: const Center(
+          child: Text(
+            'TEXTO SOBRE O APP',
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
+      );
+    },
+  ));
+}
+
+class MyStatelessWidget extends StatelessWidget {
+  MyStatelessWidget({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        title: const Text('ÔNIBUS DV'),
+        backgroundColor: Colors.orange,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.add_alert),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              scaffoldKey.currentState.showSnackBar(snackBar);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.help_outline),
+            tooltip: '',
+            onPressed: () {
+              openPage(context);
+            },
+          ),
+        ],
+      ),
+      body: MyStatelessWidget(),
+    );
+  }
+}
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          const SizedBox(height: 25),
+          RaisedButton(
+            onPressed: () {},
+            textColor: Colors.black,
+            padding: const EdgeInsets.all(0.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    Color(0xFFFFA500),
+                    Color(0xFFFFFF00),
+                    Color(0xFFFFD700),
+                  ],
+                ),
+              ),
+              padding: const EdgeInsets.all(10.0),
+              child: const Text('ROTAS', style: TextStyle(fontSize: 40)),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
